@@ -2,7 +2,7 @@ import re
 import math
 
 # Replaces contractions and punctations
-def replace_contractions(phrase):
+def replace_contractions(document):
     
     # Dictionary of common contractions and punctuations
     contractions = {
@@ -21,26 +21,26 @@ def replace_contractions(phrase):
     
     # Replaces contractions and punctuations in document
     for item in contractions.keys():
-        phrase = re.sub(item, contractions[item], phrase)
+        document = re.sub(item, contractions[item], document)
     
-    return phrase
+    return document
 
 # Standardizes phrase and splits it into individual words.
-def word_extraction(phrase):
+def word_extraction(document):
     
     # Remove leading and trailing spaces
-    phrase = phrase.strip()
+    document = document.strip()
     
     # Remove uppercase
-    phrase = phrase.lower()
+    document = document.lower()
     
     # Replace contractions and punctuations
-    phrase = replace_contractions(phrase)
+    document = replace_contractions(document)
     
     # Separate into individual words
-    phrase = phrase.split()
+    document = document.split()
     
-    return phrase
+    return document
 
 
 # Creates a dictionary of every unique word and the respective word count.
@@ -96,6 +96,7 @@ def main():
         else:
             break
     
+    # Asks for second document as an input.
     while True:
         try:
             doc2 = input("Enter the second document: ") 
